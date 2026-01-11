@@ -1,0 +1,18 @@
+# Environment Variables
+.env
+
+# API Keys
+*.key
+*.pem
+
+# Logs
+*.log
+logs/
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# IDE Settings
+.vscode/
+.idea/
