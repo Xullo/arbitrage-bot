@@ -1,5 +1,6 @@
 # Environment Variables
 .env
+config.json
 
 # API Keys
 *.key
@@ -8,11 +9,43 @@
 # Logs
 *.log
 logs/
+archive/logs/
+
+# Database
+*.db
+*.db-journal
 
 # Python Cache
 __pycache__/
 *.pyc
+*.pyo
 
 # IDE Settings
 .vscode/
 .idea/
+.claude/
+
+# Node modules and dependencies
+node_modules/
+package-lock.json
+
+# Temporary files
+nul
+*.tmp
+*.temp
+
+# Generated reports and CSV files
+*.csv
+matching_pairs*.txt
+
+# Archive folder
+archive/
+
+# Dashboard build artifacts
+dashboard/dist/
+dashboard/build/
+dashboard/.next/
+dashboard/node_modules/
+
+# API server logs
+api_server.log

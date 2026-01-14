@@ -9,9 +9,17 @@ except ImportError:
 
 @dataclass
 class RiskConfig:
-    max_risk_per_trade: float = 0.10  # 10% of bankroll (Changed for small bankroll sim)
+    max_risk_per_trade: float = 0.90  # 90% of bankroll (Enabled for small account trading)
     max_daily_loss: float = 0.20      # 20% of bankroll
     max_net_exposure: float = 0.50    # 50% of bankroll
+
+@dataclass
+class FeeConfig:
+    kalshi_maker_rate: float = 0.01   # 1%
+    kalshi_taker_rate: float = 0.01   # 1%
+    poly_flat_fee: float = 0.001      # Current requested logic
+    poly_maker_rate: float = 0.0      # Future proofing
+    poly_taker_rate: float = 0.0      # Future proofing
 
 class ConfigManager:
     """
@@ -37,6 +45,11 @@ class ConfigManager:
             max_risk_per_trade=self._config.get("max_risk_per_trade", RiskConfig.max_risk_per_trade),
             max_daily_loss=self._config.get("max_daily_loss", RiskConfig.max_daily_loss),
             max_net_exposure=self._config.get("max_net_exposure", RiskConfig.max_net_exposure)
+        )
+        
+        self.fee_config = FeeConfig(
+            kalshi_maker_rate=self._config.get("fee_kalshi", FeeConfig.kalshi_maker_rate),
+            poly_flat_fee=self._config.get("fee_poly", FeeConfig.poly_flat_fee)
         )
 
     def _load_config(self):
